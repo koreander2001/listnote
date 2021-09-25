@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:listnote/main.dart';
 
-class NoteListPage extends StatelessWidget {
+class NoteListPage extends HookWidget {
   const NoteListPage({Key? key}) : super(key: key);
 
   final String title = 'ListNote';
 
   @override
   Widget build(BuildContext context) {
-    var list = [
-      'メッセージ1',
-      'メッセージ2',
-      'メッセージ3',
-      'メッセージ4',
-      'メッセージ5',
-    ];
+    final noteList = useProvider(noteListProvider).state;
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text(title)),
-        body: ListView(children: list.map(_messageItem).toList()),
+        body: ListView(children: noteList.map(_messageItem).toList()),
         floatingActionButton: const FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: null,
