@@ -16,14 +16,15 @@ class NoteListPage extends StatelessWidget {
     ];
 
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: ListView(children: list.map(_messageItem).toList()),
-      floatingActionButton: const FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: null,
+      home: Scaffold(
+        appBar: AppBar(title: Text(title)),
+        body: ListView(children: list.map(_messageItem).toList()),
+        floatingActionButton: const FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: null,
+        ),
       ),
-    ));
+    );
   }
 
   Widget _messageItem(String title) {
