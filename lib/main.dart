@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:listnote/pages/note_list_page.dart';
+import 'package:listnote/screens/note_edit_screen.dart';
+import 'package:listnote/screens/note_list_screen.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => const MaterialApp(home: NoteListPage());
+  runApp(ProviderScope(
+      child: MaterialApp(
+    home: const NoteListScreen(),
+    routes: <String, WidgetBuilder>{
+      NoteEditScreen.routeName: (BuildContext context) =>
+          const NoteEditScreen(),
+    },
+  )));
 }
